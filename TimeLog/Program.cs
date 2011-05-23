@@ -164,11 +164,15 @@ namespace TimeLog
 
         private static bool IsNumber(char c)
         {
+            if (c >= '0' && c <= '9')
+                return true;
+            /*
             for (int i = 0; i < 10; ++i)
             {
                 if (c == (char)('0' + i))
                     return true;
             }
+             */
 
             return false;
         }
