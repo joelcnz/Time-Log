@@ -13,12 +13,7 @@ namespace TimeLog
     {
         static void Main(string[] args)
         {
-
-            var taskList = new string[] { "Bible", "C#" };
-
-            var userControl = new UserControl();
-
-            new TimeLog( taskList, userControl);
+            new TimeLog(new UserControl(new string[] { "Bible", "C#" }));
         }
     }
 } // namespace
