@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base.cs" />
     <Compile Include="TimeLog.cs" />
     <Compile Include="UserControl.cs" />
     <Compile Include="Period.cs" />
