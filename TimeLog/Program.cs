@@ -1,4 +1,4 @@
-﻿//#no checks for out of bounds
+﻿//#not much right here
 //#I would put a inner function here, but don't know how
 #define SHORT
 
@@ -13,61 +13,28 @@ namespace TimeLog
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Back spacX\be");
+            _taskList = new string[] { "Bible", "C#"};
 
-            int i = 0;
-            foreach( var arg in args )
-            {
-                Console.WriteLine("{0}) {1}", i, arg );
-                i++;
-            }
-            byte a = 255, b = 255, d;
-            int c = a + b;
-            d = (byte)c;
-            Console.WriteLine("c = {0}, d = {1}", c, d);
-
-            var dtl = new List<DateTime>();
-            
-            dtl.Add( new DateTime(1990, 3, 5) );
-            dtl.Add( new DateTime(1979, 4, 30) );
-
-            foreach( var date in dtl )
-                Console.WriteLine( date );
-
-#if LONG
-            for (var d1 = 0; d1 < dtl.Count; ++d1)
-            {
-                for (var d2 = 0; d2 < dtl.Count; ++d2)
-                {
-                    if ( dtl[d1] < dtl[d2] )
-                    {
-                        var temp = dtl[d1];
-
-                        dtl[ d1 ] = dtl[ d2 ];
-                        dtl[ d2 ] = temp;
-                    }
-                }
-            }
-#endif
-
-#if SHORT
-            dtl.Sort(); // this works too, don't know how to do comparison(sp) - or even spell it
-#endif
-
-            foreach (var date in dtl)
-                Console.WriteLine(date);
-
-            Console.WriteLine( "Using Task class instance:" );
-            var tasks = new List<Task>();
-            tasks.Add( new Task( new DateTime( 2011, 3, 24 ) ) );
-            tasks.Add( new Task( new DateTime( 1979, 4, 30 ) ) );
-            //#I would put a inner function here, but don't know how
-            Print(tasks);
-            //tasks.Sort();
-            Console.WriteLine("Is it sorted?");
-            //Print(tasks);
+            _control = new Control();
 
             Run();
+        }
+
+        public static void Run()
+        {
+            var input = "";
+            var done = false;
+            while (!done)
+            {
+                Console.WriteLine("Enter 'q' to quit, 'h' for help:");
+                input = Console.ReadLine();
+                var root = GetRoot(input);
+                List<int> arguments = GetArguments(input);
+                Console.WriteLine(
+                        "root:" + root + "\n" +
+                        "arguments: " + PrintArgs(arguments));
+                done = _control.SelectFromControl(root, arguments, _taskList); //#not much that's right here
+            }
         }
 
         private static bool inBounds(int value, int min, int max)
@@ -79,18 +46,15 @@ namespace TimeLog
         {
             var root = GetRoot( str );
             str = str.Substring( root.Length, str.Length - root.Length);
-            //#no checks for out of bounds
             bool isInBounds = true;
-            if (inBounds(str.Length, 1, 42) == isInBounds) //str.Length > 0)
+            if (inBounds(str.Length, 1, 42) == isInBounds)
             {
                 const int quotes = 1;
                 if (str[0] == '"')
                     str = str.Substring(quotes, str.Length - 1 - quotes);
 
-                var strWithSpaceRemoved = removeSpaces( str );
-
                 var numbers = new List<int>();
-                foreach (var strNum in strWithSpaceRemoved.Split(' '))
+                foreach (var strNum in reduceGaps(str).Split(' '))
                 {
                     Console.WriteLine( "'" + strNum + "'" );
                     numbers.Add(Convert.ToInt32(strNum));
@@ -101,17 +65,16 @@ namespace TimeLog
             return null;
         }
 
-        private static string removeSpaces( string str )
+        private static string reduceGaps(string str)
         {
             string oldStr = str;
 
-            str = str.Trim();
             str = str.Replace("  ", " ");
 
             if (str == oldStr)
-                return str;
+                return str.Trim();
             else
-                return removeSpaces(str); // recursion call
+                return reduceGaps(str); // recursion call
         }
 
         private static string PrintArgs(List<int> args)
@@ -126,40 +89,6 @@ namespace TimeLog
             }
 
             return argStr;
-        }
-
-        private static void Run()
-        {
-            var input = "";
-            var done = false;
-            while (!done)
-            {
-                Console.WriteLine( "Enter 'q' to quit, 'h' for help:" );
-                input = Console.ReadLine();
-                var root = GetRoot(input);
-                List<int> arguments = GetArguments( input );
-                Console.WriteLine(
-                        "root:" + root + "\n" +
-                        "arguments: " + PrintArgs( arguments ) );
-                switch (root)
-                {
-                    case "q":
-                        done = true;
-                        break;
-                    case "h":
-                        Console.WriteLine("Usage:\nq - quit\nh - this help\nadd - eg. add" + '"' + "1 2 3" + '"' );
-                        break;
-                    case "add":
-                        int total = 0;
-                        foreach(var number in arguments)
-                        {
-                            Console.Write(number + " ");
-                            total += number;
-                        }
-                        Console.WriteLine( " - " + total);
-                        break;
-                }
-            }
         }
 
         private static bool IsNumber(char c)
@@ -181,18 +110,12 @@ namespace TimeLog
         {
             var index = 0;
             for (int i = 0; i < input.Length; ++i)
-            {
                 if (input[i] == '"' || IsNumber(input[i]) == true)
-                {
                     break;
-                }
                 else
-                {
                     ++index;
-                }
-            }
 
-            return input.Substring( 0, index ); // input.Remove(0 /*, find index of '"' or # */ );
+            return input.Substring( 0, index );
         }
 
         private static int[] GetNumbers(string input)
@@ -207,5 +130,8 @@ namespace TimeLog
                 Console.WriteLine( task );
             }
         }
+
+        private static string[] _taskList;
+        private static Control _control;
     } // class 
 } // namespace
