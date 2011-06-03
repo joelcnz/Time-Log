@@ -10,9 +10,24 @@ namespace TimeLog
     /// </summary>
     public class Period
     {
-        private int hours;
-        private int minutes;
-        private int seconds;
+        private readonly int hours;
+        private readonly int minutes;
+        private readonly int seconds;
+
+        public int Hours
+        {
+            get { return hours; }
+        }
+
+        public int Minutes
+        {
+            get { return minutes; }
+        }
+
+        public int Seconds
+        {
+            get { return seconds; }
+        }
 
         public Period(int hours, int minutes, int seconds)
         {

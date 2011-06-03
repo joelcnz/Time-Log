@@ -9,7 +9,7 @@ using System.Text;
 namespace TimeLog
 {
     //#how do I sort a list of instances of Task?
-    public class Task
+    public class Task : IComparable<Task>
     {
         private int id;
         private string comment;
@@ -25,6 +25,11 @@ namespace TimeLog
         public DateTime GetDateTime()
         {
             return dateTime;
+        }
+
+        public int CompareTo(Task other)
+        {
+            return GetDateTime().CompareTo(other.GetDateTime());
         }
 
         public override string ToString()

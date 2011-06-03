@@ -1,5 +1,0 @@
-C:\Users\Joel\documents\visual studio 2010\Projects\TimeLog\TimeLog\bin\Debug\TimeLog.exe
-C:\Users\Joel\documents\visual studio 2010\Projects\TimeLog\TimeLog\bin\Debug\TimeLog.pdb
-C:\Users\Joel\documents\visual studio 2010\Projects\TimeLog\TimeLog\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Joel\documents\visual studio 2010\Projects\TimeLog\TimeLog\obj\x86\Debug\TimeLog.exe
-C:\Users\Joel\documents\visual studio 2010\Projects\TimeLog\TimeLog\obj\x86\Debug\TimeLog.pdb
