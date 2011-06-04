@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using TimeLog.Model;
 
-namespace TimeLog.Tests
+namespace TimeLog.Tests.Model
 {
     [TestFixture]
     public class TaskTests

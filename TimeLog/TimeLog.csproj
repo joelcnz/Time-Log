@@ -63,10 +63,10 @@
     <Compile Include="Commands\ViewCommand.cs" />
     <Compile Include="Model\ITaskRepository.cs" />
     <Compile Include="Model\TaskRepository.cs" />
-    <Compile Include="Tests\CommandHandlerTests.cs" />
+    <Compile Include="Tests\CommandHandlerTests\CommandHandlerTests.cs" />
     <Compile Include="Tests\CommandlineParserTests.cs" />
     <Compile Include="Tests\CommandProcessorTests.cs" />
-    <Compile Include="Tests\TaskTests.cs" />
+    <Compile Include="Tests\Model\TaskTests.cs" />
     <Compile Include="TimeLog.cs" />
     <Compile Include="UserControl.cs" />
     <Compile Include="Period.cs" />

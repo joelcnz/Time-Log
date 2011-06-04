@@ -3,7 +3,7 @@ using NUnit.Framework;
 using TimeLog.CommandHandlers;
 using TimeLog.Commands;
 
-namespace TimeLog.Tests
+namespace TimeLog.Tests.CommandHandlerTests
 {
     [TestFixture]
     public class CommandHandlerTests
