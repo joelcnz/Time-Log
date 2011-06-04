@@ -16,7 +16,7 @@ namespace TimeLog.CommandHandlers
 
         protected override void DoHandleCommand(AddCommand command)
         {
-            taskRepository.Add(new Task(DateTime.Now));
+            taskRepository.Add(new Task(command.TaskTitle, DateTime.Now));
         }
     }
 }

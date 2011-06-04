@@ -21,7 +21,7 @@ namespace TimeLog.CommandHandlers
         {
             foreach (var task in taskRepository.GetAll())
             {
-                textWriter.WriteLine(task.DateTime);
+                textWriter.WriteLine("{0} - {1}", task.Title, task.DateTime);
             }
         }
     }

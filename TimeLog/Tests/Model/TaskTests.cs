@@ -14,8 +14,8 @@ namespace TimeLog.Tests.Model
             // Arrange
             var taskList = new List<Task>();
 
-            taskList.Add(new Task(DateTime.Parse("2003/12/12")));
-            taskList.Add(new Task(DateTime.Parse("2002/11/11")));
+            taskList.Add(new Task("title1", DateTime.Parse("2003/12/12")));
+            taskList.Add(new Task("title2", DateTime.Parse("2002/11/11")));
 
             // Act
             taskList.Sort();

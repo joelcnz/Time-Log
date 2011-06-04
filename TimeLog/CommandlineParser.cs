@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using TimeLog.Commands;
 using TimeLog.Infrastructure;
 
@@ -19,7 +21,11 @@ namespace TimeLog
             switch (commandLineSegment)
             {
                 case "add":
-                    return new AddCommand();
+                    var match = Regex.Match(commandline, @"""(.*?)""");
+                    if (! match.Success)
+                        throw new InvalidCommandlineException("'add' command requires task title parameter");
+                    var result = match.Groups[1].Value;
+                    return new AddCommand(result);
 
                 case "h":
                     return new HelpCommand();

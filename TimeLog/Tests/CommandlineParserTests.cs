@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
@@ -36,10 +37,24 @@ namespace TimeLog.Tests
             // Arrange
 
             // Act
-            var command = commandlineParser.ParseCommandline("add");
+            var command = commandlineParser.ParseCommandline(@"add ""task title""");
 
             // Assert
             Assert.That(command, Is.InstanceOf<AddCommand>());
+        }
+
+        [Test]
+        public void AddCommand_ReturnsAddCommandWithTitle()
+        {
+            // Arrange
+
+            // Act
+            var command = commandlineParser.ParseCommandline(@"add ""my silly task""");
+
+            // Assert
+            var addCommand = command as AddCommand;
+            Debug.Assert(addCommand != null);
+            Assert.That(addCommand.TaskTitle, Is.EqualTo("my silly task"));
         }
 
         [Test]

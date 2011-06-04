@@ -21,7 +21,7 @@ namespace TimeLog.CommandHandlers
                    q - quit
                    v - view tasks
                    h - this help
-                   add - eg. add""1 2 3""");
+                   add - eg. add ""1 2 3""");
         }
     }
 }
