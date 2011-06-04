@@ -50,5 +50,17 @@ namespace TimeLog.Tests
             // Assert
             Assert.That(command.Root, Is.EqualTo("help"));
         }
+
+        [Test]
+        public void ViewCommand_ReturnsViewCOmmand()
+        {
+            // Act
+            var command = commandlineParser.ParseCommandline("v");
+
+            // Assert
+            Assert.That(command.Root, Is.EqualTo("v"));
+
+        }
+
     }
 }
