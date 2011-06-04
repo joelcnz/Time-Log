@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TimeLog.CommandHandlers;
 using TimeLog.Commands;
 
@@ -23,6 +24,11 @@ namespace TimeLog
         /// </summary>
         public void RegisterCommandHandler(ICommandHandler commandHandler)
         {
+            if (commandHandler == null) throw new ArgumentNullException("commandHandler");
+
+            if (registeredHandlers.Any(h => h.GetType() == commandHandler.GetType()))
+                throw new InvalidOperationException("Handler type " + commandHandler.GetType() + " already registered.");
+
             registeredHandlers.Add(commandHandler);
         }
 

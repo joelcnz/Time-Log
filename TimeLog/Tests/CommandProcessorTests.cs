@@ -46,6 +46,36 @@ namespace TimeLog.Tests
             Assert.Throws<ArgumentNullException>(() => commandProcessor.ProcessCommand(null));
         }
 
+        [Test]
+        public void RegisterCommandHandler_NothingYetRegistered_ShouldNotError()
+        {
+            // Act
+            commandProcessor.RegisterCommandHandler(new FakeCommandHandler());
+
+            // Assert
+            Assert.Pass();
+        }
+
+        [Test]
+        public void RegisterCommandHandler_SameHandlerTypeAlreadyRegistered_ShouldError()
+        {
+            // Arrange 
+            commandProcessor.RegisterCommandHandler(new FakeCommandHandler());
+
+            // Act & Assert
+            Assert.Throws<InvalidOperationException>( () =>
+                commandProcessor.RegisterCommandHandler(new FakeCommandHandler()));
+        }
+
+
+        [Test]
+        public void RegisterCommandHandler_NullHandler_ShouldError()
+        {
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() =>
+                commandProcessor.RegisterCommandHandler(null));
+        }
+
         public class FakeCommand : ICommand
         {
         }
