@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TimeLog.CommandHandlers;
+using TimeLog.Model;
 
 namespace TimeLog
 {
@@ -13,7 +15,17 @@ namespace TimeLog
     {
         static void Main(string[] args)
         {
-            new TimeLog( args );
+            var commandProcessor = new CommandProcessor();
+            
+            var taskRepository = new TaskRepository();
+
+            commandProcessor.RegisterCommandHandler(new HelpCommandHandler(Console.Out));
+            commandProcessor.RegisterCommandHandler(new QuitCommandHandler());
+            commandProcessor.RegisterCommandHandler(new ViewCommandHandler(taskRepository, Console.Out));
+            commandProcessor.RegisterCommandHandler(new AddCommandHandler(taskRepository));
+  
+            var timeLog = new TimeLog(commandProcessor);
+            timeLog.Run();
         }
     }
 } // namespace

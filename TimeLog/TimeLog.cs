@@ -10,19 +10,16 @@ namespace TimeLog
 {
     class TimeLog
     {
-        public TimeLog( string[] args )
+        public TimeLog(CommandProcessor commandProcessor)
         {
-            userControl = new UserControl( new string[] {"Bible", "C#"} );
-            Run();
+            userControl = new UserControl(commandProcessor, new CommandlineParser());
         }
 
-        private void Run()
+        public void Run()
         {
-            var done = false;
-            
-            while (!done)
+            while (true)
             {
-                done = userControl.ControlPrompt();
+                userControl.ControlPrompt();
             }
         }
 
