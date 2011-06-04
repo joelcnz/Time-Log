@@ -2,19 +2,25 @@
 //#not sure about this
 //#how do I sort a list of instances of Task?
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace TimeLog
+namespace TimeLog.Model
 {
     //#how do I sort a list of instances of Task?
     public class Task : IComparable<Task>
     {
         private string comment;
-        private Period timePeriod;
+        private Period period;
         private DateTime dateTime; // for date and time in one number I think. 
-        //private Date date; // year, month and day of the month
+
+        public string Comment
+        {
+            get { return comment; }
+        }
+
+        public Period Period
+        {
+            get { return period; }
+        }
 
         public int Id { get; set; }
 
