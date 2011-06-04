@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandlineParser.cs" />
     <Compile Include="TimeLog.cs" />
     <Compile Include="UserControl.cs" />
     <Compile Include="Period.cs" />
