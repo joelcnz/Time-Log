@@ -3,13 +3,22 @@ using TimeLog.Commands;
 
 namespace TimeLog.CommandHandlers
 {
-    public abstract class CommandHandler<TCommand> : ICommandHandler where TCommand : ICommand
+    public abstract class CommandHandler<TCommand> : ICommandHandler where TCommand : class, ICommand
     {
         public bool CanHandleCommandsOfType(Type type)
         {
             return typeof(TCommand) == type;
         }
 
-        public abstract void HandleCommand(ICommand command);
+        public void HandleCommand(ICommand command)
+        {
+            if (command == null) throw new ArgumentNullException("command");
+
+            if (command.GetType() != typeof(TCommand)) throw new ArgumentException("Command type not supported");
+
+            DoHandleCommand(command as TCommand);
+        }
+
+        protected abstract void DoHandleCommand(TCommand command);
     }
 }

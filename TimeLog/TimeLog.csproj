@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="CommandHandlers\CommandHandler.cs" />
     <Compile Include="CommandHandlers\ICommandHandler.cs" />
+    <Compile Include="CommandHandlers\ViewCommandHandler.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="Commands\AddCommand.cs" />
     <Compile Include="Commands\HelpCommand.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Commands\ViewCommand.cs" />
     <Compile Include="Model\ITaskRepository.cs" />
     <Compile Include="Model\TaskRepository.cs" />
+    <Compile Include="Tests\CommandHandlerTests.cs" />
     <Compile Include="Tests\CommandlineParserTests.cs" />
     <Compile Include="Tests\CommandProcessorTests.cs" />
     <Compile Include="Tests\TaskTests.cs" />

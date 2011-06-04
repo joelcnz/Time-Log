@@ -50,11 +50,16 @@ namespace TimeLog.Tests
         {
         }
 
-        public class FakeCommandHandler : CommandHandler<FakeCommand>
+        public class FakeCommandHandler : ICommandHandler
         {
             public ICommand HandleCommandLastCalledWith { get; set; }
 
-            public override void HandleCommand(ICommand command)
+            public bool CanHandleCommandsOfType(Type type)
+            {
+                return type == typeof (FakeCommand);
+            }
+
+            public void HandleCommand(ICommand command)
             {
                 HandleCommandLastCalledWith = command;
             }
