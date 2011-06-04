@@ -13,7 +13,7 @@ namespace TimeLog
     {
         static void Main(string[] args)
         {
-            new TimeLog(new UserControl(new string[] { "Bible", "C#" }));
+            new TimeLog( args );
         }
     }
 } // namespace
