@@ -28,9 +28,11 @@ namespace TimeLog
             { 
                 case "q":
                     return true;
+
                 case "h":
                     Console.WriteLine("Usage:\nq - quit\nv - view tasks\nh - this help\nadd - eg. add" + '"' + "1 2 3" + '"');
                     break;
+
                 case "v":
                     int id = 0;
                     foreach( var task in m_taskList)
@@ -39,6 +41,7 @@ namespace TimeLog
                         ++id;
                     }
                     break;
+
                 case "add":
                     Console.Write("add: ");
                     int total = 0;
@@ -54,7 +57,7 @@ namespace TimeLog
             return false;
         }
 
-        private bool inBounds(int value, int min, int max)
+        private bool InBounds(int value, int min, int max)
         {
             return (value >= min && value <= max);
         }
@@ -64,14 +67,14 @@ namespace TimeLog
             var root = GetRoot(str);
             str = str.Substring(root.Length, str.Length - root.Length);
             bool isInBounds = true;
-            if (inBounds(str.Length, 1, 42) == isInBounds)
+            if (InBounds(str.Length, 1, 42) == isInBounds)
             {
                 const int quotes = 1;
                 if (str[0] == '"')
                     str = str.Substring(quotes, str.Length - 1 - quotes);
 
                 var numbers = new List<int>();
-                foreach (var strNum in reduceGaps(str).Split(' '))
+                foreach (var strNum in ReduceGaps(str).Split(' '))
                 {
                     Console.WriteLine("'" + strNum + "'");
                     numbers.Add(Convert.ToInt32(strNum));
@@ -82,7 +85,7 @@ namespace TimeLog
             return null;
         }
 
-        private string reduceGaps(string str)
+        private string ReduceGaps(string str)
         {
             string oldStr = str;
 
@@ -91,7 +94,7 @@ namespace TimeLog
             if (str == oldStr)
                 return str.Trim();
             else
-                return reduceGaps(str); // recursion call
+                return ReduceGaps(str); // recursion call
         }
 
         private string PrintArgs(List<int> args)

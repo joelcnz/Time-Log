@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using TimeLog;
 
 namespace TimeLog.Tests
 {
@@ -21,7 +20,7 @@ namespace TimeLog.Tests
             taskList.Sort();
 
             // Assert
-            Assert.That(taskList[0].GetDateTime(), Is.LessThan(taskList[1].GetDateTime()));
+            Assert.That(taskList[0].DateTime, Is.LessThan(taskList[1].DateTime));
         }
     }
 }

@@ -12,7 +12,7 @@ namespace TimeLog
     {
         public TimeLog( UserControl userContol )
         {
-            m_userControl = userContol;
+            userControl = userContol;
             Run();
         }
 
@@ -21,10 +21,10 @@ namespace TimeLog
             var done = false;
             while (!done)
             {
-                done = m_userControl.ControlPrompt();
+                done = userControl.ControlPrompt();
             }
         }
 
-        private UserControl m_userControl;
+        private readonly UserControl userControl;
     }
 }

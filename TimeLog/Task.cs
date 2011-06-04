@@ -11,25 +11,24 @@ namespace TimeLog
     //#how do I sort a list of instances of Task?
     public class Task : IComparable<Task>
     {
-        private int id;
         private string comment;
         private Period timePeriod;
         private DateTime dateTime; // for date and time in one number I think. 
         //private Date date; // year, month and day of the month
+
+        public int Id { get; set; }
 
         public Task(DateTime dateTime)
         {
             this.dateTime = dateTime; //#not sure about this
         }
 
-        public DateTime GetDateTime()
+        public DateTime DateTime
         {
-            return dateTime;
-        }
-
-        public int CompareTo(Task other)
-        {
-            return GetDateTime().CompareTo(other.GetDateTime());
+            get
+            {
+                return dateTime;
+            }
         }
 
         public override string ToString()
@@ -37,31 +36,9 @@ namespace TimeLog
             return dateTime.ToString();
         }
 
-        /*
-        public int Compare(Object t2)
+        public int CompareTo(Task other)
         {
-            //#I don't know the order
-            if ( dateTime.Millisecond < ((Task)t2).GetDateTime().Millisecond )
-            {
-                return 1;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-        */
-
-        public int Id
-        {
-            get
-            {
-                return id;
-            }
-            set
-            {
-                id = value;
-            }
+            return DateTime.CompareTo(other.DateTime);
         }
     }
 }
