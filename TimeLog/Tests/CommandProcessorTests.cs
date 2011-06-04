@@ -2,6 +2,7 @@ using System;
 using NUnit.Framework;
 using TimeLog.CommandHandlers;
 using TimeLog.Commands;
+using TimeLog.Infrastructure;
 
 namespace TimeLog.Tests
 {

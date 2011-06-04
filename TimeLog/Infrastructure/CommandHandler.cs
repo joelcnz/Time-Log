@@ -1,7 +1,6 @@
 using System;
-using TimeLog.Commands;
 
-namespace TimeLog.CommandHandlers
+namespace TimeLog.Infrastructure
 {
     public abstract class CommandHandler<TCommand> : ICommandHandler where TCommand : class, ICommand
     {

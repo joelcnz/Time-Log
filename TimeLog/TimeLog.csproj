@@ -52,23 +52,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandlers\AddCommandHandler.cs" />
-    <Compile Include="CommandHandlers\CommandHandler.cs" />
+    <Compile Include="Infrastructure\CommandHandler.cs" />
     <Compile Include="CommandHandlers\HelpCommandHandler.cs" />
-    <Compile Include="CommandHandlers\ICommandHandler.cs" />
+    <Compile Include="Infrastructure\ICommandHandler.cs" />
     <Compile Include="CommandHandlers\QuitCommandHandler.cs" />
     <Compile Include="CommandHandlers\ViewCommandHandler.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="Commands\AddCommand.cs" />
     <Compile Include="Commands\HelpCommand.cs" />
     <Compile Include="CommandlineParser.cs" />
-    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Infrastructure\ICommand.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Commands\ViewCommand.cs" />
     <Compile Include="InvalidCommandlineException.cs" />
     <Compile Include="Model\ITaskRepository.cs" />
     <Compile Include="Model\TaskRepository.cs" />
     <Compile Include="Tests\CommandHandlerTests\AddCommandHandlerTests.cs" />
-    <Compile Include="Tests\CommandHandlerTests\CommandHandlerTests.cs" />
+    <Compile Include="Tests\Infrastructure\CommandHandlerTests.cs" />
     <Compile Include="Tests\CommandHandlerTests\ViewCommandHandlerTests.cs" />
     <Compile Include="Tests\CommandlineParserTests.cs" />
     <Compile Include="Tests\CommandProcessorTests.cs" />
@@ -83,9 +83,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

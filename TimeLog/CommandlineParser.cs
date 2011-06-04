@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TimeLog.Commands;
+using TimeLog.Infrastructure;
 
 namespace TimeLog
 {

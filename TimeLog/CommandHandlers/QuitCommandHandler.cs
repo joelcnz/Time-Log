@@ -1,5 +1,6 @@
 using System;
 using TimeLog.Commands;
+using TimeLog.Infrastructure;
 
 namespace TimeLog.CommandHandlers
 {

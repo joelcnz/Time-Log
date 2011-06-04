@@ -1,4 +1,4 @@
-﻿namespace TimeLog.Commands
+﻿namespace TimeLog.Infrastructure
 {
     /// <summary>
     /// Abstract class for commands.

@@ -1,7 +1,6 @@
 ﻿using System;
-using TimeLog.Commands;
 
-namespace TimeLog.CommandHandlers
+namespace TimeLog.Infrastructure
 {
     /// <summary>
     /// Interface for command handlers to implement.
