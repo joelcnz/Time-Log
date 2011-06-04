@@ -35,10 +35,20 @@ namespace TimeLog.Tests
             // Arrange
 
             // Act
-            var command = commandlineParser.ParseCommandline("a");
+            var command = commandlineParser.ParseCommandline("add");
 
             // Assert
             Assert.That(command.Root, Is.EqualTo("add"));
+        }
+
+        [Test]
+        public void HelpCommand_ReturnsHelpCommand()
+        {
+            // Act
+            var command = commandlineParser.ParseCommandline("h");
+
+            // Assert
+            Assert.That(command.Root, Is.EqualTo("help"));
         }
     }
 }
