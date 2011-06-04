@@ -31,28 +31,8 @@ namespace TimeLog
                     return new QuitCommand();
 
                 default:
-                    throw new ArgumentException("Unrecognised commandline: " + commandLineSegment);
+                    throw new InvalidCommandlineException("Unrecognised commandline: " + commandLineSegment);
             }
-        }
-
-        private bool IsNumber(char c)
-        {
-            if (c >= '0' && c <= '9')
-                return true;
-
-            return false;
-        }
-
-        private string GetRoot(string input)
-        {
-            var index = 0;
-            for (int i = 0; i < input.Length; ++i)
-                if (input[i] == '"' || IsNumber(input[i]) == true)
-                    break;
-                else
-                    ++index;
-
-            return input.Substring(0, index);
         }
     }
 }

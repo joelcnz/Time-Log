@@ -64,6 +64,7 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Commands\ViewCommand.cs" />
+    <Compile Include="InvalidCommandlineException.cs" />
     <Compile Include="Model\ITaskRepository.cs" />
     <Compile Include="Model\TaskRepository.cs" />
     <Compile Include="Tests\CommandHandlerTests\AddCommandHandlerTests.cs" />

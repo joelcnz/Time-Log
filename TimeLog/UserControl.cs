@@ -16,23 +16,21 @@ namespace TimeLog
 
         public void ControlPrompt() // need a better method name
         {
-            string input = "";
-
             Console.WriteLine("Enter 'q' to quit, 'h' for help:");
-            input = Console.ReadLine();
+            var input = Console.ReadLine();
 
-            ICommand command;
             try
             {
-                command = commandlineParser.ParseCommandline(input);
+                var command = commandlineParser.ParseCommandline(input);
+
+                commandProcessor.ProcessCommand(command);
             }
-            catch (Exception)
+            catch (InvalidCommandlineException exception)
             {
                 // if we get an error from wrong command syntax, just display help
-                command = new HelpCommand();
+                Console.WriteLine(exception.Message);
+                commandProcessor.ProcessCommand(new HelpCommand());
             }
-
-            commandProcessor.ProcessCommand(command);
         }
     } // class
 } // namespace

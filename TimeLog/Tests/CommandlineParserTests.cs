@@ -77,7 +77,7 @@ namespace TimeLog.Tests
         public void UnrecognisedCommand_Errors()
         {
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => commandlineParser.ParseCommandline("z"));
+            Assert.Throws<InvalidCommandlineException>(() => commandlineParser.ParseCommandline("z"));
         }
 
     }
