@@ -23,13 +23,20 @@ namespace TimeLog
             if (string.IsNullOrEmpty(commandline))
                 return null;
 
-            if (commandline.StartsWith("a"))
+            var commandLineSegments = commandline.Split(' ');
+            switch (commandLineSegments[0])
             {
-                return new Command("add");
-            }
-            else
-            {
-                return new Command("help");
+                case "add":
+                    return new Command("add");
+
+                case "h":
+                    return new Command("help");
+                
+                case "v":
+                    return new Command("view");
+
+                default:
+                    return null;
             }
         }
 

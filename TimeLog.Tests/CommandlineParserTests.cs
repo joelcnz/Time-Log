@@ -58,7 +58,7 @@ namespace TimeLog.Tests
             var command = commandlineParser.ParseCommandline("v");
 
             // Assert
-            Assert.That(command.Root, Is.EqualTo("v"));
+            Assert.That(command.Root, Is.EqualTo("view"));
 
         }
 
