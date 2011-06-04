@@ -23,7 +23,14 @@ namespace TimeLog
             if (string.IsNullOrEmpty(commandline))
                 return null;
 
-            return new Command("add");
+            if (commandline.StartsWith("a"))
+            {
+                return new Command("add");
+            }
+            else
+            {
+                return new Command("help");
+            }
         }
 
         private bool IsNumber(char c)
