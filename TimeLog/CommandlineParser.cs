@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TimeLog.Commands;
 
 namespace TimeLog
 {
     public class CommandlineParser
     {
      
-        public Command ParseCommandline(string commandline)
+        public ICommand ParseCommandline(string commandline)
         {
             if (string.IsNullOrEmpty(commandline))
                 return null;
@@ -17,16 +18,16 @@ namespace TimeLog
             switch (commandLineSegments[0])
             {
                 case "add":
-                    return new Command("add");
+                    return new AddCommand();
 
                 case "h":
-                    return new Command("h");
+                    return new HelpCommand();
                 
                 case "v":
-                    return new Command("v");
+                    return new ViewCommand();
 
                 case "q":
-                    return new Command("q");
+                    return new QuitCommand();
 
                 default:
                     return null;

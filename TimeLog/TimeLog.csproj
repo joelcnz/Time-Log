@@ -51,8 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command.cs" />
+    <Compile Include="CommandHandlers\CommandHandler.cs" />
+    <Compile Include="CommandHandlers\ICommandHandler.cs" />
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="CommandlineParser.cs" />
+    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Tests\CommandlineParserTests.cs" />
     <Compile Include="Tests\TaskTests.cs" />
     <Compile Include="TimeLog.cs" />

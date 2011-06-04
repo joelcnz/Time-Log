@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TimeLog.Commands;
 
 namespace TimeLog
 {
@@ -21,35 +22,27 @@ namespace TimeLog
 
             Console.WriteLine("Enter 'q' to quit, 'h' for help:");
             input = Console.ReadLine();
-            string root = "";
             var command = commandlineParser.ParseCommandline(input);
             if (command == null)
             {
-                root = "help";
+                command = new HelpCommand();
             }
-            else
-            {
-                root = command.Root;
-                if (IsNumber(root[0]))
-                {
-                    tasks.Add(new Task(DateTime.Now));
-                }  
-            } 
+
             List<int> arguments = GetArguments(input);
             Console.WriteLine(
-                    "root:" + root + "\n" +
+                    "command:" + command.GetType().Name + "\n" +
                     "arguments: " + PrintArgs(arguments));
 
-            switch (root)
+            switch (command.GetType().Name.Replace("Command", ""))
             { 
-                case "q":
+                case "Quit":
                     return true;
 
-                case "h":
+                case "Help":
                     Console.WriteLine("Usage:\nq - quit\nv - view tasks\nh - this help\nadd - eg. add" + '"' + "1 2 3" + '"');
                     break;
 
-                case "v":
+                case "View":
                     int id = 0;
                     foreach( var task in m_taskList)
                     {
@@ -58,7 +51,7 @@ namespace TimeLog
                     }
                     break;
 
-                case "add":
+                case "Add":
                     Console.Write("add: ");
                     int total = 0;
                     foreach (var number in arguments)
@@ -80,7 +73,7 @@ namespace TimeLog
 
         private List<int> GetArguments(string str)
         {
-            var root = commandlineParser.ParseCommandline(str).Root;
+            var root = GetRoot(str);
             str = str.Substring(root.Length, str.Length - root.Length);
             bool isInBounds = true;
             if (InBounds(str.Length, 1, 42) == isInBounds)
@@ -99,6 +92,18 @@ namespace TimeLog
             }
 
             return null;
+        }
+
+        private string GetRoot(string input)
+        {
+            var index = 0;
+            for (int i = 0; i < input.Length; ++i)
+                if (input[i] == '"' || IsNumber(input[i]) == true)
+                    break;
+                else
+                    ++index;
+
+            return input.Substring(0, index);
         }
 
         private string ReduceGaps(string str)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using TimeLog.Commands;
 
 namespace TimeLog.Tests
 {
@@ -38,7 +39,7 @@ namespace TimeLog.Tests
             var command = commandlineParser.ParseCommandline("add");
 
             // Assert
-            Assert.That(command.Root, Is.EqualTo("add"));
+            Assert.That(command, Is.InstanceOf<AddCommand>());
         }
 
         [Test]
@@ -48,7 +49,7 @@ namespace TimeLog.Tests
             var command = commandlineParser.ParseCommandline("h");
 
             // Assert
-            Assert.That(command.Root, Is.EqualTo("h"));
+            Assert.That(command, Is.InstanceOf<HelpCommand>());
         }
 
         [Test]
@@ -58,8 +59,17 @@ namespace TimeLog.Tests
             var command = commandlineParser.ParseCommandline("v");
 
             // Assert
-            Assert.That(command.Root, Is.EqualTo("v"));
+            Assert.That(command, Is.InstanceOf<ViewCommand>());
+        }
 
+        [Test]
+        public void QUitCommand_ReturnsQuitOmmand()
+        {
+            // Act
+            var command = commandlineParser.ParseCommandline("q");
+
+            // Assert
+            Assert.That(command, Is.InstanceOf<QuitCommand>());
         }
 
     }
