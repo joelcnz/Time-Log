@@ -13,7 +13,7 @@ namespace TimeLog.CommandHandlers
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        bool CanHandleCommand(Type type);
+        bool CanHandleCommandsOfType(Type type);
 
         /// <summary>
         /// Handle the command (i.e. do what the command asks).

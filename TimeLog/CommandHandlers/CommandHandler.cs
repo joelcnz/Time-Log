@@ -5,7 +5,7 @@ namespace TimeLog.CommandHandlers
 {
     public abstract class CommandHandler<TCommand> : ICommandHandler where TCommand : ICommand
     {
-        public bool CanHandleCommand(Type type)
+        public bool CanHandleCommandsOfType(Type type)
         {
             return typeof(TCommand) == type;
         }
