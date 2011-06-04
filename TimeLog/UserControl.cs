@@ -10,6 +10,7 @@ namespace TimeLog
         public UserControl(string[] taskList)
         {
             m_taskList = taskList;
+            m_tasks = new List<Task>();
         }
 
         public bool ControlPrompt() // need a better method name
@@ -19,6 +20,11 @@ namespace TimeLog
             Console.WriteLine("Enter 'q' to quit, 'h' for help:");
             input = Console.ReadLine();
             var root = GetRoot(input);
+            if (root.Length > 0 && IsNumber(root[0]))
+            {
+                m_tasks.Add(new Task(DateTime.Now));
+            }
+
             List<int> arguments = GetArguments(input);
             Console.WriteLine(
                     "root:" + root + "\n" +
@@ -142,5 +148,6 @@ namespace TimeLog
         }
 
         private string[] m_taskList;
+        private List<Task> m_tasks;
     } // class
 } // namespace
