@@ -66,10 +66,10 @@
     <Compile Include="Commands\ViewCommand.cs" />
     <Compile Include="InvalidCommandlineException.cs" />
     <Compile Include="Model\ITaskRepository.cs" />
-    <Compile Include="Model\TaskRepository.cs" />
-    <Compile Include="Tests\CommandHandlerTests\AddCommandHandlerTests.cs" />
+    <Compile Include="Model\InMemoryTaskRepository.cs" />
+    <Compile Include="Tests\CommandHandlers\AddCommandHandlerTests.cs" />
     <Compile Include="Tests\Infrastructure\CommandHandlerTests.cs" />
-    <Compile Include="Tests\CommandHandlerTests\ViewCommandHandlerTests.cs" />
+    <Compile Include="Tests\CommandHandlers\ViewCommandHandlerTests.cs" />
     <Compile Include="Tests\CommandlineParserTests.cs" />
     <Compile Include="Tests\CommandProcessorTests.cs" />
     <Compile Include="Tests\Model\TaskTests.cs" />

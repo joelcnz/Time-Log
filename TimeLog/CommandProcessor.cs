@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TimeLog.CommandHandlers;
-using TimeLog.Commands;
 using TimeLog.Infrastructure;
 
 namespace TimeLog

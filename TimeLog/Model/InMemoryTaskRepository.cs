@@ -8,11 +8,11 @@ namespace TimeLog.Model
     /// <remarks>
     /// Need to be able to save this to persistent storage like on the file system or something when.
     /// </remarks>
-    public class TaskRepository : ITaskRepository
+    public class InMemoryTaskRepository : ITaskRepository
     {
         private readonly IList<Task> taskList;
 
-        public TaskRepository()
+        public InMemoryTaskRepository()
         {
             taskList = new List<Task>();
         }

@@ -9,7 +9,6 @@ namespace TimeLog
 {
     public class CommandlineParser
     {
-     
         public ICommand ParseCommandline(string commandline)
         {
             if (string.IsNullOrEmpty(commandline))

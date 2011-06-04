@@ -12,7 +12,7 @@ namespace TimeLog.Tests.CommandHandlerTests
         public void HandleCommand_ShouldAddTaskToRepository()
         {
             // Arrange
-            var taskRepository = new TaskRepository();
+            var taskRepository = new InMemoryTaskRepository();
 
             var addCommandHandler = new AddCommandHandler(taskRepository);
 

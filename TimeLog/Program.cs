@@ -17,7 +17,7 @@ namespace TimeLog
         {
             var commandProcessor = new CommandProcessor();
             
-            var taskRepository = new TaskRepository();
+            var taskRepository = new InMemoryTaskRepository();
 
             commandProcessor.RegisterCommandHandler(new HelpCommandHandler(Console.Out));
             commandProcessor.RegisterCommandHandler(new QuitCommandHandler());

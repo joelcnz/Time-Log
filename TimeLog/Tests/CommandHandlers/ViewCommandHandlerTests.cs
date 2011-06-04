@@ -15,7 +15,7 @@ namespace TimeLog.Tests.CommandHandlerTests
         public void HandleCommand_OneTask_OutputsOneTaskToWriter()
         {
             // Arrange
-            var taskRepository = new TaskRepository();
+            var taskRepository = new InMemoryTaskRepository();
             taskRepository.Add(new Task(DateTime.Parse("2003/12/12")));
             taskRepository.Add(new Task(DateTime.Parse("2004/12/12")));
 
