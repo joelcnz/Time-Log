@@ -19,7 +19,7 @@ namespace TimeLog.Tests
         }
 
         [Test]
-        public void EmptyCommand_ReturnsNull()
+        public void EmptyCommand_ReturnsHelpCommand()
         {
             // Arrange
 
@@ -27,7 +27,7 @@ namespace TimeLog.Tests
             var command = commandlineParser.ParseCommandline("");
 
             // Assert
-            Assert.That(command, Is.Null);
+            Assert.That(command, Is.InstanceOf<HelpCommand>());
         }
 
         [Test]
@@ -63,13 +63,21 @@ namespace TimeLog.Tests
         }
 
         [Test]
-        public void QUitCommand_ReturnsQuitOmmand()
+        public void QuitCommand_ReturnsQuitOmmand()
         {
             // Act
             var command = commandlineParser.ParseCommandline("q");
 
             // Assert
             Assert.That(command, Is.InstanceOf<QuitCommand>());
+        }
+
+
+        [Test]
+        public void UnrecognisedCommand_Errors()
+        {
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => commandlineParser.ParseCommandline("z"));
         }
 
     }

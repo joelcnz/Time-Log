@@ -12,10 +12,11 @@ namespace TimeLog
         public ICommand ParseCommandline(string commandline)
         {
             if (string.IsNullOrEmpty(commandline))
-                return null;
+                return new HelpCommand();
 
             var commandLineSegments = commandline.Split(' ');
-            switch (commandLineSegments[0])
+            var commandLineSegment = commandLineSegments[0];
+            switch (commandLineSegment)
             {
                 case "add":
                     return new AddCommand();
@@ -30,7 +31,7 @@ namespace TimeLog
                     return new QuitCommand();
 
                 default:
-                    return null;
+                    throw new ArgumentException("Unrecognised commandline: " + commandLineSegment);
             }
         }
 

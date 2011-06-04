@@ -22,11 +22,18 @@ namespace TimeLog
 
             Console.WriteLine("Enter 'q' to quit, 'h' for help:");
             input = Console.ReadLine();
-            var command = commandlineParser.ParseCommandline(input);
-            if (command == null)
+
+            ICommand command;
+            try
             {
+                command = commandlineParser.ParseCommandline(input);
+            }
+            catch (Exception)
+            {
+                // if we get an error from wrong command syntax, just display help
                 command = new HelpCommand();
             }
+
 
             List<int> arguments = GetArguments(input);
             Console.WriteLine(
