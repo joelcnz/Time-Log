@@ -20,7 +20,10 @@ namespace TimeLog
      
         public Command ParseCommandline(string commandline)
         {
-            return null;
+            if (string.IsNullOrEmpty(commandline))
+                return null;
+
+            return new Command("add");
         }
 
         private bool IsNumber(char c)

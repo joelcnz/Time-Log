@@ -29,7 +29,7 @@ namespace TimeLog.Tests
             Assert.That(command, Is.Null);
         }
 
-        [Test, Ignore("Not done yet")]
+        [Test]
         public void AddCommand_ReturnsAddCommand()
         {
             // Arrange
