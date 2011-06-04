@@ -5,16 +5,6 @@ using System.Text;
 
 namespace TimeLog
 {
-    public class Command
-    {
-        public string Root { get; private set; }
-
-        public Command(string root)
-        {
-            Root = root;
-        }
-    }
-
     public class CommandlineParser
     {
      
@@ -30,10 +20,13 @@ namespace TimeLog
                     return new Command("add");
 
                 case "h":
-                    return new Command("help");
+                    return new Command("h");
                 
                 case "v":
-                    return new Command("view");
+                    return new Command("v");
+
+                case "q":
+                    return new Command("q");
 
                 default:
                     return null;

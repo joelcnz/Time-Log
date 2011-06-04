@@ -10,6 +10,8 @@ namespace TimeLog
         public UserControl(string[] taskList)
         {
             m_taskList = taskList;
+
+            commandlineParser = new CommandlineParser();
         }
 
         public bool ControlPrompt() // need a better method name
@@ -18,7 +20,16 @@ namespace TimeLog
 
             Console.WriteLine("Enter 'q' to quit, 'h' for help:");
             input = Console.ReadLine();
-            var root = GetRoot(input);
+            string root = "";
+            var command = commandlineParser.ParseCommandline(input);
+            if (command == null)
+            {
+                root = "help";
+            }
+            else
+            {
+                root = command.Root;   
+            } 
             List<int> arguments = GetArguments(input);
             Console.WriteLine(
                     "root:" + root + "\n" +
@@ -64,7 +75,7 @@ namespace TimeLog
 
         private List<int> GetArguments(string str)
         {
-            var root = GetRoot(str);
+            var root = commandlineParser.ParseCommandline(str).Root;
             str = str.Substring(root.Length, str.Length - root.Length);
             bool isInBounds = true;
             if (InBounds(str.Length, 1, 42) == isInBounds)
@@ -111,39 +122,7 @@ namespace TimeLog
             return argStr;
         }
 
-        private bool IsNumber(char c)
-        {
-            if (c >= '0' && c <= '9')
-                return true;
-
-            return false;
-        }
-
-        private string GetRoot(string input)
-        {
-            var index = 0;
-            for (int i = 0; i < input.Length; ++i)
-                if (input[i] == '"' || IsNumber(input[i]) == true)
-                    break;
-                else
-                    ++index;
-
-            return input.Substring(0, index);
-        }
-
-        private int[] GetNumbers(string input)
-        {
-            return new int[] { 1, 2, 3 };
-        }
-
-        private void Print(List<Task> tasks)
-        {
-            foreach (var task in tasks)
-            {
-                Console.WriteLine(task);
-            }
-        }
-
         private string[] m_taskList;
+        private CommandlineParser commandlineParser;
     } // class
 } // namespace
