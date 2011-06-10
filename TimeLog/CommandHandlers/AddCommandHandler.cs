@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TimeLog.Commands;
 using TimeLog.Infrastructure;
 using TimeLog.Model;
@@ -16,7 +17,12 @@ namespace TimeLog.CommandHandlers
 
         protected override void DoHandleCommand(AddCommand command)
         {
-            taskRepository.Add(new Task(command.TaskTitle, DateTime.Now));
+            var lastTaskNumber = taskRepository.GetAll().Max(t => t.Number);
+            var task = new Task(lastTaskNumber+1)
+                           {
+                               Title = command.TaskTitle
+                           };
+            taskRepository.Add(task);
         }
     }
 }

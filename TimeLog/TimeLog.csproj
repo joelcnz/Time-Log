@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandlers\AddCommandHandler.cs" />
-    <Compile Include="DoingTask.cs" />
+    <Compile Include="Model\DoingTask.cs" />
     <Compile Include="Infrastructure\CommandHandler.cs" />
     <Compile Include="CommandHandlers\HelpCommandHandler.cs" />
     <Compile Include="Infrastructure\ICommandHandler.cs" />
@@ -73,7 +73,7 @@
     <Compile Include="Tests\CommandHandlers\ViewCommandHandlerTests.cs" />
     <Compile Include="Tests\CommandlineParserTests.cs" />
     <Compile Include="Tests\CommandProcessorTests.cs" />
-    <Compile Include="Tests\Model\TaskTests.cs" />
+    <Compile Include="Tests\Model\DoingTaskTests.cs" />
     <Compile Include="TimeLog.cs" />
     <Compile Include="UserControl.cs" />
     <Compile Include="Period.cs" />

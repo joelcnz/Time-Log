@@ -10,8 +10,8 @@ namespace TimeLog.Model
     /// </remarks>
     public interface ITaskRepository
     {
-        IEnumerable<DoingTask> GetAll();
+        IEnumerable<Task> GetAll();
 
-        void Add(DoingTask task);
+        void Add(Task task);
     }
 }
