@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandlers\AddCommandHandler.cs" />
+    <Compile Include="DoingTask.cs" />
     <Compile Include="Infrastructure\CommandHandler.cs" />
     <Compile Include="CommandHandlers\HelpCommandHandler.cs" />
     <Compile Include="Infrastructure\ICommandHandler.cs" />

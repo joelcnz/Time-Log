@@ -19,9 +19,9 @@ namespace TimeLog.CommandHandlers
 
         protected override void DoHandleCommand(ViewCommand command)
         {
-            foreach (var task in taskRepository.GetAll())
+            foreach (var doingTask in taskRepository.GetAll())
             {
-                textWriter.WriteLine("{0} - {1}", task.Title, task.DateTime);
+                textWriter.WriteLine("{0} - {1}", doingTask.Title, doingTask.DateTime);
             }
         }
     }
