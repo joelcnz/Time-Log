@@ -1,10 +1,14 @@
-﻿namespace TimeLog.Model
+﻿using System.Collections.Generic;
+
+namespace TimeLog.Model
 {
     public class Task
     {
         public int Number { get; private set; }
 
         public string Title { get; set; }
+
+        public IList<DoingTask> TaskDoings { get; private set; }
 
         public Task(int number)
         {
