@@ -4,7 +4,7 @@ using TimeLog.CommandHandlers;
 using TimeLog.Commands;
 using TimeLog.Model;
 
-namespace TimeLog.Tests.CommandHandlerTests
+namespace TimeLog.Tests.CommandHandlers
 {
     [TestFixture]
     public class AddCommandHandlerTests
@@ -41,5 +41,39 @@ namespace TimeLog.Tests.CommandHandlerTests
             Assert.That(taskRepository.GetAll().First().Title, Is.EqualTo(taskTitle));
         }
 
+        [Test]
+        public void HandleCommand_NoExistingTasksShouldAddTaskNumberOne()
+        {
+            // Arrange
+            const string taskTitle = "tasktitle";
+
+            var taskRepository = new InMemoryTaskRepository();
+
+            var addCommandHandler = new AddCommandHandler(taskRepository);
+
+            // Act
+            addCommandHandler.HandleCommand(new AddCommand(taskTitle));
+
+            // Assert
+            Assert.That(taskRepository.GetAll().Last().Number, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void HandleCommand_HaveExistingTasksShouldAddHighestTaskNumberPlusOne()
+        {
+            // Arrange
+            const string taskTitle = "tasktitle";
+
+            var taskRepository = new InMemoryTaskRepository();
+            taskRepository.Add(new Task(123));
+
+            var addCommandHandler = new AddCommandHandler(taskRepository);
+
+            // Act
+            addCommandHandler.HandleCommand(new AddCommand(taskTitle));
+
+            // Assert
+            Assert.That(taskRepository.GetAll().Last().Number, Is.EqualTo(124));
+        }
     }
 }

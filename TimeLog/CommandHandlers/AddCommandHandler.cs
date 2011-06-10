@@ -17,12 +17,26 @@ namespace TimeLog.CommandHandlers
 
         protected override void DoHandleCommand(AddCommand command)
         {
-            var lastTaskNumber = taskRepository.GetAll().Max(t => t.Number);
-            var task = new Task(lastTaskNumber+1)
+            int nextTaskNumber = GetTaskNumber();
+            var task = new Task(nextTaskNumber)
                            {
                                Title = command.TaskTitle
                            };
             taskRepository.Add(task);
+        }
+
+        private int GetTaskNumber()
+        {
+            var existingTasks = taskRepository.GetAll();
+            if (! existingTasks.Any())
+            {
+                return 1;
+            }
+            else
+            {
+                var lastTaskNumber = taskRepository.GetAll().Max(t => t.Number);
+                return lastTaskNumber + 1;
+            }
         }
     }
 }
