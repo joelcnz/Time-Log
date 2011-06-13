@@ -1,3 +1,4 @@
+//#as?
 using System;
 
 namespace TimeLog.Infrastructure
@@ -15,7 +16,7 @@ namespace TimeLog.Infrastructure
 
             if (command.GetType() != typeof(TCommand)) throw new ArgumentException("Command type not supported");
 
-            DoHandleCommand(command as TCommand);
+            DoHandleCommand(command as TCommand); //#as?
         }
 
         protected abstract void DoHandleCommand(TCommand command);

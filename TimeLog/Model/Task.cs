@@ -24,7 +24,7 @@ namespace TimeLog.Model
         /// <summary>
         /// Get single task that is displayed in list of tasks for adding
         /// </summary>
-        /// <returns>id and title</returns>
+        /// <returns>"id and title" string</returns>
         public override string ToString()
         {
             return Number + " - " + Title;
