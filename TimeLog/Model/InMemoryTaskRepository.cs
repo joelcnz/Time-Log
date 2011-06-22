@@ -1,3 +1,4 @@
+//#How does IEnumerable<..> work?
 using System.Collections.Generic;
 
 namespace TimeLog.Model
@@ -17,6 +18,7 @@ namespace TimeLog.Model
             taskList = new List<Task>();
         }
 
+        //#How does IEnumerable<..> work?
         public IEnumerable<Task> GetAll()
         {
             return taskList;

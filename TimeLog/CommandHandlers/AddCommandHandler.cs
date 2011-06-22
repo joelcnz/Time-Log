@@ -1,4 +1,3 @@
-//#What's this?
 using System;
 using System.Linq;
 using TimeLog.Commands;
@@ -19,7 +18,6 @@ namespace TimeLog.CommandHandlers
         protected override void DoHandleCommand(AddCommand command)
         {
             int nextTaskNumber = GetTaskNumber();
-            //#What's this?
             var task = new Task(nextTaskNumber)
                            {
                                Title = command.TaskTitle

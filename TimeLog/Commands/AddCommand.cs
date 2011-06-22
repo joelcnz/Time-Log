@@ -1,10 +1,11 @@
-﻿using TimeLog.Infrastructure;
+﻿//#not supposed to be title
+using TimeLog.Infrastructure;
 
 namespace TimeLog.Commands
 {
     public class AddCommand : ICommand
     {
-        public AddCommand(string taskTitle)
+        public AddCommand(string taskTitle) //#not supposed to be title
         {
             TaskTitle = taskTitle;
         }

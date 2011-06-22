@@ -23,7 +23,7 @@ namespace TimeLog
                 case "add":
                     var match = Regex.Match(commandline, @"""(.*?)""");
                     if (! match.Success)
-                        throw new InvalidCommandlineException("'add' command requires task title parameter");
+                        throw new InvalidCommandlineException("'add' command requires number parameter(s)");
                     var result = match.Groups[1].Value;
                     return new AddCommand(result);
 

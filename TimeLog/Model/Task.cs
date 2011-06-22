@@ -15,6 +15,9 @@ namespace TimeLog.Model
             Number = number;
         }
 
+        //Of testing use
+        public int[] NumberList { get; set; }
+
         public Task(int number, string title)
         {
             Number = number;
